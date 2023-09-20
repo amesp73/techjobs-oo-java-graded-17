@@ -11,9 +11,9 @@ public class JobTest {
 
     @Test
     public void testSettingJobId () {
-        Job test_job = new Job();
-        Job test_job_2 = new Job();
-        assertNotEquals(test_job.getId(), test_job_2.getId());
+        Job jobOne = new Job();
+        Job jobTwo = new Job();
+        assertNotEquals(jobOne.getId(), jobTwo.getId());
     }
 
     @Test
@@ -37,5 +37,22 @@ public class JobTest {
         assertEquals("Desert", test_job.getLocation().getValue());
         assertEquals("Quality control", test_job.getPositionType().getValue());
         assertEquals("Persistence", test_job.getCoreCompetency().getValue());
+    }
+
+    @Test
+    public void testJobsForEquality() {
+        Job jobOne = new Job("Nurse",
+                            new Employer("Hospital"),
+                            new Location("St. Louis"),
+                            new PositionType("Emergency Room"),
+                            new CoreCompetency("Critical Thinking"));
+
+        Job jobTwo = new Job("Nurse",
+                            new Employer("Hospital"),
+                            new Location("St. Louis"),
+                            new PositionType("Emergency Room"),
+                            new CoreCompetency("Critical Thinking"));
+
+        assertNotEquals(jobOne, jobTwo);
     }
 }

@@ -6,6 +6,9 @@ public class Job {
 
     private int id;
     private static int nextId = 1;
+    /* static makes it shared between every object of Job
+    if not static, number will not be shared and
+    all objects will be an ID of 1 */
 
     private String name;
     private Employer employer;
