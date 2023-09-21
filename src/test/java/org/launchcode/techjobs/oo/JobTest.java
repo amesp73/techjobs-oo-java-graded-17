@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testng.annotations.BeforeTest;
 
+import java.awt.desktop.SystemEventListener;
+
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -54,5 +56,36 @@ public class JobTest {
                             new CoreCompetency("Critical Thinking"));
 
         assertNotEquals(jobOne, jobTwo);
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job test_job = new Job();
+        String newline = System.lineSeparator();
+        String testString = test_job.toString();
+        int testStringLength = testString.length();
+
+        assertEquals(newline, testString.substring(0, 1));
+//        assertTrue(testString.endsWith(newline));
+        assertEquals(newline, testString.substring(testStringLength - 1));
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job test_job = new Job("Nurse",
+                new Employer("Hospital"),
+                new Location("St. Louis"),
+                new PositionType("Emergency Room"),
+                new CoreCompetency("Critical Thinking"));
+        String newline = System.lineSeparator();
+
+        assertEquals(newline +
+                    "ID: " + test_job.getId() + newline +
+                    "Name: " + test_job.getName() + newline +
+                    "Employer: " + test_job.getEmployer() + newline +
+                    "Location: " + test_job.getLocation() + newline +
+                    "Position Type: " + test_job.getPositionType() + newline +
+                    "Core Competency: " + test_job.getCoreCompetency() + newline, test_job.toString());
     }
 }
