@@ -55,13 +55,58 @@ public class Job {
 
     public String toString() {
         String newline = System.lineSeparator();
-        return newline +
-                "ID: " + id + newline +
-                "Name: " + name + newline +
-                "Employer: " + employer + newline +
-                "Location: " + location + newline +
-                "Position Type: " + positionType + newline +
-                "Core Competency: " + coreCompetency + newline;
+        String nameString;
+        String employerString;
+        String locationString;
+        String positionString;
+        String coreCompString;
+
+
+
+        if(name == null || name.equals("")) {
+            nameString = "Data not available";
+        } else {
+            nameString = name;
+        }
+
+        if(employer == null || employer.getValue().equals("")) {
+            employerString = "Data not available";
+        } else {
+            employerString = employer.getValue();
+        }
+
+        if(location == null || location.getValue().equals("")) {
+            locationString = "Data not available";
+        } else {
+            locationString = location.getValue();
+        }
+
+        if(positionType == null || positionType.getValue().equals("")) {
+            positionString = "Data not available";
+        } else {
+            positionString = positionType.getValue();
+        }
+
+        if(coreCompetency == null || coreCompetency.getValue().equals("")) {
+            coreCompString = "Data not available";
+        } else {
+            coreCompString = coreCompetency.getValue();
+        }
+
+
+
+        if(nameString.equals("Data not available") && employerString.equals("Data not available") && locationString.equals("Data not available")
+          && positionString.equals("Data not available") && coreCompString.equals("Data not available")) {
+            return "OOPS! This job does not exist";
+        } else {
+            return newline +
+                    "ID: " + id + newline +
+                    "Name: " + nameString + newline +
+                    "Employer: " + employerString + newline +
+                    "Location: " + locationString + newline +
+                    "Position Type: " + positionString + newline +
+                    "Core Competency: " + coreCompString + newline;
+        }
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
