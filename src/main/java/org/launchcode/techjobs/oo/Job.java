@@ -97,7 +97,7 @@ public class Job {
 
         if(nameString.equals("Data not available") && employerString.equals("Data not available") && locationString.equals("Data not available")
           && positionString.equals("Data not available") && coreCompString.equals("Data not available")) {
-            return "OOPS! This job does not exist";
+            return "OOPS! This job does not seem to exist.";
         } else {
             return newline +
                     "ID: " + id + newline +
